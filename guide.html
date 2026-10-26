@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Guide: Testing Auth & Signup Webhooks with Disposable Edu Emails (2026)</title>
+  <meta name="description" content="Technical guide for software engineers and QA testers on validating academic verification flows, handling onboarding webhooks, and utilizing services like UES.edu.pl.">
+  <meta name="keywords" content="developer email testing, educational email verification, QA temp mail, ues edu pl guide, webhook email testing, ephemeral inbox">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Developer Guide: Testing Auth & Signup Webhooks with Disposable Edu Emails">
+  <meta property="og:description" content="Step-by-step best practices for automated testing of email verification with ephemeral inboxes.">
+  <meta property="og:url" content="https://edumail-hub.netlify.app/guide.html">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Article JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Testing Auth & Signup Webhooks with Disposable Edu Emails",
+    "description": "Comprehensive engineering guide for simulating educational onboarding and automated QA validation.",
+    "author": {
+      "@type": "Organization",
+      "name": "EduMail Hub"
+    },
+    "datePublished": "2026-10-26",
+    "mainEntityOfPage": "https://edumail-hub.netlify.app/guide.html"
+  }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="./index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight text-slate-900">
+        <span class="w-8 h-8 rounded-lg bg-sky-600 text-white flex items-center justify-center text-sm shadow-sm font-black">🎓</span>
+        EduMail<span class="text-sky-600">Hub</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="./index.html" class="text-slate-600 hover:text-sky-600 transition">&larr; Back to Directory</a>
+        <a href="https://www.ues.edu.pl/" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-sky-600 text-white font-semibold hover:bg-sky-700 transition shadow-sm">
+          Launch UES.edu.pl
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Article Header -->
+  <section class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center gap-2 text-sm text-sky-600 font-semibold mb-4">
+        <span>QA & DevOps Engineering</span> &bull; <span>7 min read</span> &bull; <span>Updated 2026</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Mastering Email Verification Flows: How to Leverage Ephemeral Edu Inboxes for QA & Staging
+      </h1>
+      <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+        Building automated test suites for user onboarding flows requires reliable, low-latency email delivery. When testing academic validation pipelines, services like <a href="https://www.ues.edu.pl/" class="text-sky-600 font-medium hover:underline">UES.edu.pl</a> provide the ideal balance between domain authenticity and disposable convenience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Article Body -->
+  <main class="py-12 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white p-8 sm:p-12 rounded-2xl border border-slate-200 shadow-sm space-y-8 text-slate-700 leading-relaxed">
+        
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">1. The Challenge of Domain-Restricted Testing</h2>
+          <p>
+            Modern SaaS platforms, developer portals, and educational discount programs frequently employ strict domain filters. Instead of allowing generic email providers (such as Gmail or Outlook), authentication systems parse the top-level domain (TLD) and Second-Level Domain (SLD) to enforce rules like:
+          </p>
+          <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-sm my-4 overflow-x-auto">
+// Example regex validation for educational emails
+const isEduEmail = (email) => {
+  return /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+(edu|edu\.[a-z]{2})$/i.test(email);
+};
+          </div>
+          <p>
+            When testing such logic in automated CI/CD pipelines, engineers often struggle to generate valid academic inboxes dynamically. Using disposable providers on generic domains fails validation immediately, while institutional university emails cannot be scripted or shared across testing agents.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">2. Why UES.edu.pl Solves This Problem</h2>
+          <p>
+            The dedicated service at <a href="https://www.ues.edu.pl/" class="text-sky-600 font-bold hover:underline">UES.edu.pl</a> delivers a zero-setup solution tailored for high-velocity testing:
+          </p>
+          <ul class="list-disc pl-6 space-y-3 mt-4">
+            <li><strong>Official Academic Suffix:</strong> Operating on the recognized <code>.edu.pl</code> registry, it passes rigorous domain whitelist checks without triggering spam blacklists.</li>
+            <li><strong>Instant Ephemeral Lifecycle:</strong> Inboxes do not require prior registration or password persistence. Mailboxes automatically discard incoming contents after 24 hours, ensuring staging databases remain tidy.</li>
+            <li><strong>Zero Cost Overhead:</strong> It is 100% free to access, enabling distributed testing teams to spawn inboxes on demand.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">3. E2E Testing Architecture Overview</h2>
+          <p>
+            Here is a typical workflow integrating disposable email verification into a Playwright or Cypress automated test suite:
+          </p>
+          <ol class="list-decimal pl-6 space-y-3 mt-4">
+            <li><strong>Generate Inbox:</strong> The automation runner generates an address targeting the <code>@ues.edu.pl</code> domain.</li>
+            <li><strong>Trigger Signup:</strong> The test script fills the registration form with the test email.</li>
+            <li><strong>Webhook Notification:</strong> The backend dispatches the confirmation link or 6-digit OTP code.</li>
+            <li><strong>Retrieve OTP:</strong> The script polls the inbox to extract the activation token and completes the verification step.</li>
+          </ol>
+        </div>
+
+        <!-- Callout Banner -->
+        <div class="rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 p-8 text-white shadow-lg">
+          <h3 class="text-xl font-black mb-2">Ready to Test Your Application Flow?</h3>
+          <p class="text-sky-100 text-sm mb-6 max-w-xl">
+            Experience lightning-fast disposable educational mail. Generate an active inbox on UES.edu.pl with a single tap and start receiving test verification emails immediately.
+          </p>
+          <a href="https://www.ues.edu.pl/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-sky-700 font-bold hover:bg-sky-50 transition shadow-sm">
+            Generate Free Inbox on UES.edu.pl &rarr;
+          </a>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">4. Conclusion & Recommendations</h2>
+          <p>
+            Whether verifying developer tooling, testing student registration pipelines, or protecting your primary email against spam during QA audits, having a dependable disposable educational email platform is essential. We recommend bookmarking <a href="https://www.ues.edu.pl/" class="text-sky-600 font-bold hover:underline">UES.edu.pl</a> as your primary tool for rapid test cycles.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white py-12 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-800">EduMailHub</span> &copy; 2026. All rights reserved.
+      </div>
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="./index.html" class="hover:text-slate-800 transition">Directory Home</a>
+        <a href="https://www.ues.edu.pl/" target="_blank" rel="noopener" class="text-sky-600 hover:underline font-medium">Visit UES.edu.pl</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

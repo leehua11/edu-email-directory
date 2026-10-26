@@ -1,0 +1,3 @@
+# Netlify Redirects & Rewrite rules
+# Pretty URLs are enabled by default on Netlify
+/guide   /guide.html   200
