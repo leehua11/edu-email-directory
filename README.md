@@ -39,16 +39,6 @@ This repository is built with pure static HTML and Tailwind CSS (CDN-powered). I
 
 ---
 
-## 🎯 SEO & Backlink Highlights
-
-- **Topical Relevance**: Tailored specifically around ephemeral academic inboxes, developer sandbox testing, and `.edu.pl` domain validation.
-- **Contextual Dofollow Links**: Natural in-content anchor text pointing directly to [https://www.ues.edu.pl/](https://www.ues.edu.pl/).
-- **Rich Snippets & Structured Data**: Built-in `FAQPage` and `TechArticle` JSON-LD schemas to maximize Google search impressions.
-- **Dual Authority**:
-  - **Tier 1A**: The GitHub repository itself (DR 96+).
-  - **Tier 1B**: The live Netlify website (`*.netlify.app`, DR 90+).
-
----
 
 ## 📄 License
 
